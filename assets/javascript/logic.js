@@ -1,3 +1,5 @@
+//I still cant get Firebase to save the data to the page. Tried multiple CDNs as well. 
+
 // Create the Firebase object
 var firebaseConfig = {
     apiKey: "AIzaSyD0ttzvXq8BM9i5rs6DVjDJ3F8hOgy4Iug",
@@ -15,26 +17,21 @@ var firebaseConfig = {
   // Variable that links back to Firebase 
   var database = firebase.database();
 console.log(firebase);
-
-
-
-
-  
+ 
   //Run Time - set to the Current time ID  
   setInterval(function(startTime) {
-    $("#timer").html(moment().format('hh:mm a'))
+    $("#timer").html(moment().format('hh:mm'))
   }, 1000);
   
-  // Button Click
+  // Click event
   $("#add-train").on("click", function(event) {
-    //This prevents the page from refreshing
     event.preventDefault();
   
-    // Code in the logic for storing and retrieving the most recent train information
-    var train = $("#trainname-input").val().trim();
-    var destination = $("#destination-input").val().trim();
-    var frequency = $("#frequency-input").val().trim();
-    var firstTime = $("#firsttime-input").val().trim();
+    // store the most recent train info
+    var train = $("#trainName").val().trim();
+    var destination = $("#destination").val().trim();
+    var frequency = $("#frequency").val().trim();
+    var firstTime = $("#firstTime").val().trim();
     
 
 
@@ -47,26 +44,17 @@ console.log(firebase);
     };
       //this is added so we can get most resent user so we can get most recent user to brower and to do this we need to change the listener  
     database.ref().push(trainInfo);
-  
-    console.log(trainInfo.formtrain);
-    console.log(trainInfo.formdestination);
-    console.log(trainInfo.formfrequency);
-    console.log(trainInfo.formfirsttime);
-    console.log(trainInfo.dateAdded);
-  
-    // Alert
-    // alert("Train was successfully added");
-  
+    
     // Clears all of the text-boxes
-    $("#trainname-input").val("");
-    $("#destination-input").val("");
-    $("#frequency-input").val("");
-    $("#firsttime-input").val("");
+    $("#trainName").val("");
+    $("#destination").val("");
+    $("#frequency").val("");
+    $("#firstTime").val("");
   
   });
   
   
-  // Firebase watcher + initial loader 
+  // Firebase watcher - THIS WAS EXPLAINED TO ME BY BILL, FOUND AN EXPLANATION ONLINE TOO, BUT I STILL DON'T GET IT. CONTINUE TO GOOGLE IT. MIGHT BE WHY YOUR CODE STILL DOESNT WORK 
   database.ref().on("child_added", function(childSnapshot, prevChildKey) {  
     var train = childSnapshot.val().formtrain;
     var destination = childSnapshot.val().formdestination;
@@ -98,9 +86,10 @@ console.log(firebase);
     // Current time
     var currentTime = moment();
     console.log("Current time: " + moment(currentTime).format("hh:mm"));
-    // $("#timer").html(h + ":" + m);
-    $("#timer").text(currentTime.format("hh:mm a"));
-    // Difference between the times
+
+    $("#timer").text(currentTime.format("hh:mm"));
+
+
     var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
     console.log("Time away: " + diffTime);
   
@@ -115,8 +104,6 @@ console.log(firebase);
     //determine Next Train Arrival
     var nextArrival = moment().add(minutesAway, "minutes").format("hh:mm");
     console.log("Arrival time: " + moment(nextArrival).format("hh:mm"));
- 
-  
     });
   
   setInterval(timeUpdater, 6000);
