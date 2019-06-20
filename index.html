@@ -15,7 +15,7 @@
 
 </head>
 <body>
-	<div class="container bg-primary text-white py-3 mb-3">
+	<div class="container bg-primary text-white py-3 mb-3" id="mainContainer">
 		<div class="row">
 			<div class="col-lg-4 col-md-4 col-sm-12 text-center pt-2">
 				<img src="assets/images/chuglife.jpg" alt="Chug Life" height="45%">
@@ -27,15 +27,15 @@
 		</div>
 	</div>
 	<div class="container px-0">
-		<div class="card mb-3">
-			<h5 class="card-header rounded-0 bg-primary text-white md-5">Train Schedule</h5>
+		<div class="card mb-3" id="card2">
+			<h5 class="card-header rounded-0 bg-primary text-white md-5" id="header1">Train Schedule</h5>
 			<div class="card-body">
-			<table class="table table-hover" id="train-table">
+			<table class="table table-hover">
 				<thead>
 					<tr>
 						<th scope="col">Train #</th>
 						<th scope="col">Desitination</th>
-						<th scope="col">Intervals</th>
+						<th scope="col">Frequency</th>
 						<th scope="col">Next Arrival</th>
 						<th scope="col">Arrival In Minutes</th>
 					</tr>
@@ -47,27 +47,27 @@
 		</div>
 	</div>
 	<div class="container px-0">
-		<div class="card mb-3">
+		<div class="card mb-3" id="card3">
 			<h3 class="card-header  rounded-0 text-white bg-primary">Enter New Train Info Here</h3>
 			<div class="card-body">
 				<form>
 					<div class="form-group">
-					<label for="trainname-input" class= "font-weight-bold">Train Name</label>
-					<input type="text" class="form-control" id="trainname-input" aria-describedby="emailHelp">
+					<label for="trainName" class= "font-weight-bold">Train Name</label>
+					<input type="text" class="form-control" id="trainName">
 					</div>
 					<div class="form-group">
-					<label for="destination-input" class= "font-weight-bold">Destination</label>
-					<input type="text" class="form-control" id="destination-input">
+					<label for="destination" class= "font-weight-bold">Destination</label>
+					<input type="text" class="form-control" id="destination">
 					</div>
 					<div class="form-group">
-					<label for="firsttime-input" class= "font-weight-bold">First Arrival</label>
-					<input data-format=" hh:mm" type="text" class="form-control" id="firsttime-input">
+					<label for="firstTime" class= "font-weight-bold">First Arrival</label>
+					<input data-format=" hh:mm" type="text" class="form-control" id="firstTime">
 					</div>
 					<div class="form-group">
-					<label for="frequency-input" class= "font-weight-bold">Frequency (min)</label>
-					<input type="number" class="form-control" id="frequency-input">
+					<label for="frequency" class= "font-weight-bold">Frequency (min)</label>
+					<input type="number" class="form-control" id="frequency">
 					</div>
-					<button type="submit" class="btn btn-primary rounded-0 " id="add-train">Submit</button>
+					<button type="submit" class="btn btn-primary rounded-0 " id="submit">Submit</button>
 				</form>
 			</div>
 		</div>
