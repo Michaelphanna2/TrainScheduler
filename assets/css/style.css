@@ -1,3 +1,30 @@
+body {
+    background-color: gray;
+}
+
+#mainContainer {
+    background-color: green;
+}
+
 .row {
-background-color: green;
+    background-color: green;
+
+}
+
+#card2 {
+    background-color: green;
+}
+
+#header1 {
+    background-color: green;
+
+}
+
+#card3 {
+    background-color: green;
+}
+
+#submit {
+    background-color: white;
+    color: black;
 }
